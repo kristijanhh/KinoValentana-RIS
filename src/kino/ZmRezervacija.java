@@ -1,15 +1,12 @@
 package kino;
 
 import java.awt.*;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
@@ -173,7 +170,6 @@ public class ZmRezervacija extends JFrame {
       try {
          krmilnik.potrdiRezervacijo(nacin);
          
-         // Ticket dialog s "Save as .txt" gumbom
          JTextArea ticketArea = new JTextArea(rezervacija.generirajIzpisVstopnic());
          ticketArea.setEditable(false);
          ticketArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
@@ -181,22 +177,10 @@ public class ZmRezervacija extends JFrame {
          JScrollPane ticketScroll = new JScrollPane(ticketArea);
          ticketScroll.setPreferredSize(new Dimension(520, 300));
 
-         // Ustvari dialog s Save gumbom
-         JPanel ticketPanel = new JPanel(new BorderLayout(10, 10));
-         ticketPanel.add(ticketScroll, BorderLayout.CENTER);
-         
-         JButton saveButton = new JButton("Shrani kot .txt");
-         saveButton.addActionListener(e -> shraniVstopnicoKotTxt(ticketArea.getText()));
-         Stil.primarniGumb(saveButton);
-         
-         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-         buttonPanel.add(saveButton);
-         ticketPanel.add(buttonPanel, BorderLayout.SOUTH);
+         JOptionPane.showMessageDialog(this, ticketScroll,
+                 "Pregled rezervacije", JOptionPane.INFORMATION_MESSAGE);
 
-         JOptionPane.showMessageDialog(this, ticketPanel,
-                 "Natisnjena vstopnica", JOptionPane.INFORMATION_MESSAGE);
-
-         prikaziSporocilo("Rezervacija in plačilo uspešna!\n\n"
+         prikaziSporocilo("Rezervacija uspešna!\n\n"
                  + rezervacija.steviloVstopnic() + " vstopnic za "
                  + rezervacija.getProjekcija().getNaslovFilma() + ".");
          krmilnik.ponastavi();
@@ -204,29 +188,6 @@ public class ZmRezervacija extends JFrame {
          osnovnoOkno.ponoviPrikaz();
       } catch (Exception ex) {
          prikaziSporocilo("Plačilo ni bilo uspešno: " + ex.getMessage());
-      }
-   }
-
-   private void shraniVstopnicoKotTxt(String vsebina) {
-      JFileChooser fileChooser = new JFileChooser();
-      fileChooser.setFileFilter(new FileNameExtensionFilter("Text files (*.txt)", "txt"));
-      fileChooser.setSelectedFile(new java.io.File("vstopnica.txt"));
-      
-      int rezultat = fileChooser.showSaveDialog(this);
-      if (rezultat == JFileChooser.APPROVE_OPTION) {
-         try {
-            java.io.File datoteka = fileChooser.getSelectedFile();
-            PrintWriter writer = new PrintWriter(new FileWriter(datoteka));
-            writer.print(vsebina);
-            writer.close();
-            JOptionPane.showMessageDialog(this, 
-               "Vstopnica je uspešno shranjena v:\n" + datoteka.getAbsolutePath(),
-               "Uspeh", JOptionPane.INFORMATION_MESSAGE);
-         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, 
-               "Napaka pri shranjevanju: " + ex.getMessage(),
-               "Napaka", JOptionPane.ERROR_MESSAGE);
-         }
       }
    }
 

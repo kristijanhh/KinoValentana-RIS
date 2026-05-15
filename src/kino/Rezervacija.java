@@ -41,7 +41,7 @@ public class Rezervacija {
 
       StringBuilder sb = new StringBuilder();
 
-      sb.append("=== VSTOPNICE ===\n");
+      sb.append("=== Rezervacija vstopnice ===\n");
       sb.append("Film: ")
               .append(projekcija.getNaslovFilma())
               .append("\n");
