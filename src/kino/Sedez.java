@@ -3,12 +3,12 @@ package kino;
 public class Sedez {
    private int stevilkaVrstice;
    private int stevilkaSedeza;
-   private TipSedeza tipSedeza;
+   private String tipSedeza;
    private boolean zaseden;
 
    public Sedez() {}
 
-   public Sedez(int stevilkaVrstice, int stevilkaSedeza, TipSedeza tipSedeza) {
+   public Sedez(int stevilkaVrstice, int stevilkaSedeza, String tipSedeza) {
       this.stevilkaVrstice = stevilkaVrstice;
       this.stevilkaSedeza = stevilkaSedeza;
       this.tipSedeza = tipSedeza;
@@ -16,12 +16,12 @@ public class Sedez {
    }
 
    public String vrniTipSedeza() {
-      return tipSedeza.toString();
+      return tipSedeza;
    }
 
    public int getStevilkaVrstice() { return stevilkaVrstice; }
    public int getStevilkaSedeza() { return stevilkaSedeza; }
-   public TipSedeza getTipSedeza() { return tipSedeza; }
+   public String getTipSedeza() { return tipSedeza; }
    public boolean isZaseden() { return zaseden; }
    public void setZaseden(boolean zaseden) { this.zaseden = zaseden; }
 

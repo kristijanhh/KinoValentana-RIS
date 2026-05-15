@@ -27,14 +27,11 @@ public class Podatki {
    }
 
    private static void napolniStranke() {
-      // Regular customers
       stranke.add(new Stranka("Janez", "Novak", "041-123-456", "janez.novak@example.com"));
-      // Intentional duplicate name (different phone/email) — demonstrates the picker
-      stranke.add(new Stranka("Janez", "Novak", "040-555-777", "janez.novak.mlajsi@example.com"));
       stranke.add(new Stranka("Marija", "Kovač", "031-987-654", "marija.kovac@example.com"));
       stranke.add(new Stranka("Ana", "Krajnc", "040-222-333", "ana.krajnc@example.com"));
 
-      // Club members
+      //VIP stranke
       stranke.add(new Clan("Petra", "Horvat", "070-111-222", "petra.horvat@example.com",
                            1001, LocalDate.of(2023, 5, 14), 15));
       stranke.add(new Clan("Marko", "Zupan", "051-555-333", "marko.zupan@example.com",
@@ -46,10 +43,10 @@ public class Podatki {
    private static void napolniSedeze() {
       for (int vrsta = 1; vrsta <= 5; vrsta++) {
          for (int sedez = 1; sedez <= 8; sedez++) {
-            TipSedeza tip;
-            if (vrsta == 1) tip = TipSedeza.INVALIDSKI;
-            else if (vrsta == 5) tip = TipSedeza.VIP;
-            else tip = TipSedeza.STANDARDNI;
+            String tip;
+            if (vrsta == 1) tip = "Invalidski";
+            else if (vrsta == 5) tip = "VIP";
+            else tip = "Standardni";
             sedezi.add(new Sedez(vrsta, sedez, tip));
          }
       }

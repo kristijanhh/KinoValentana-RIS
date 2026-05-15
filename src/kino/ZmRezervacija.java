@@ -159,16 +159,16 @@ public class ZmRezervacija extends JFrame {
 
    public void potrdiRezervacijo() {
       // 1. Izbira načina plačila
-      NacinPlacila[] opcije = NacinPlacila.values();
+      String[] opcije = {"Kartica", "Gotovina"};
       int izbira = JOptionPane.showOptionDialog(this,
               "Izberite način plačila za znesek " + rezervacija.getSkupnaCena() + " €",
               "Plačilo",
               JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-              null, opcije, opcije[0]);
+              null, opcije, opcije[1]);
 
       if (izbira == -1) return; // Uporabnik je zaprl okno (Alternativni tok 3 - Preklic pred plačilom)
 
-      NacinPlacila nacin = opcije[izbira];
+      String nacin = opcije[izbira];
 
       try {
          krmilnik.potrdiRezervacijo(nacin);

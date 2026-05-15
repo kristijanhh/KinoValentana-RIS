@@ -1,7 +1,7 @@
 package kino;
 
 import java.awt.Font;
-//import java.util.Locale;
+import java.util.Locale;
 import java.util.Map;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;

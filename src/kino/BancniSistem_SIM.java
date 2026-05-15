@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class BancniSistem_SIM {
 
-    public static boolean procesirajPlacilo(java.math.BigDecimal znesek, NacinPlacila nacinPlacila) {
+    public static boolean procesirajPlacilo(java.math.BigDecimal znesek, String nacinPlacila) {
         if (nacinPlacila == null) {
             return false;
         }
 
-        if (nacinPlacila == NacinPlacila.GOTOVINA) {
+        if ("Gotovina".equalsIgnoreCase(nacinPlacila)) {
             return true; // Cash is always successful
         }
 

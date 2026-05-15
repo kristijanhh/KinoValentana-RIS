@@ -164,10 +164,13 @@ public class ZmPregledSedezev extends JFrame {
             b.setBackground(new Color(80, 200, 80));
             b.setEnabled(true);
          } else {
-            switch (s.getTipSedeza()) {
-               case VIP:           b.setBackground(new Color(255, 215, 0)); break;
-               case INVALIDSKI:    b.setBackground(new Color(135, 206, 250)); break;
-               default:            b.setBackground(new Color(220, 220, 220)); break;
+            String tip = s.getTipSedeza();
+            if ("VIP".equalsIgnoreCase(tip)) {
+               b.setBackground(new Color(255, 215, 0));
+            } else if ("Invalidski".equalsIgnoreCase(tip)) {
+               b.setBackground(new Color(135, 206, 250));
+            } else {
+               b.setBackground(new Color(220, 220, 220));
             }
             b.setEnabled(true);
          }

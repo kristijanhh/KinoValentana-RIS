@@ -106,7 +106,7 @@ public class KRezervacija {
       zadnjaRezervacija.ustvariRezervacijo();
    }
 
-   public void potrdiRezervacijo(NacinPlacila nacinPlacila) throws Exception {
+   public void potrdiRezervacijo(String nacinPlacila) throws Exception {
 
       if (zadnjaRezervacija == null) {
          throw new Exception("Ni pripravljene rezervacije.");
